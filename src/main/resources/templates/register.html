@@ -72,7 +72,7 @@
                         <div class="layui-inline iphone">
                             <div class="layui-input-inline">
                                 <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
-                                <input type="tel" name="mail" id="mail" lay-verify="required|email"
+                                <input type="email" name="mail" id="mail" lay-verify="required|email"
                                        placeholder="请输入邮箱" autocomplete="off" class="layui-input">
                             </div>
                         </div>
@@ -135,6 +135,15 @@
         var $ = layui.$, form = layui.form;
         var find = $("#find");
         var mail = $("#mail");
+
+        /**
+         * 验证邮箱是否存在
+         */
+        mail.change(function () {
+            $.post("/checkMail", {mail: mail.val()}, function (data) {
+                layer.msg(data.msg);
+            })
+        })
 
 
         find.click(function () {

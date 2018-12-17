@@ -8,6 +8,7 @@ public class CakeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CakeApplication.class, args);
+        System.out.println("321Go");
     }
 
 }

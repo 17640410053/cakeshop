@@ -1,7 +1,7 @@
+/*
 package com.spring.cake.entity;
 
 import org.hibernate.annotations.DynamicInsert;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -146,3 +146,4 @@ public class UsersEntity {
         return Objects.hash(userId, username, password, phone, mail, birth, gender, image, token, createtime);
     }
 }
+*/

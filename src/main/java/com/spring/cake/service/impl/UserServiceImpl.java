@@ -1,7 +1,7 @@
 package com.spring.cake.service.impl;
 
 import com.bilibili.yl.util.MD5Utils;
-import com.spring.cake.entity.UsersEntity;
+import com.spring.cake.model.UsersEntity;
 import com.spring.cake.repository.UserRepository;
 import com.spring.cake.service.UserService;
 import org.springframework.stereotype.Service;
@@ -20,5 +20,16 @@ public class UserServiceImpl implements UserService {
         user.setUsername("用户_" + UUID.randomUUID().toString().split("-")[0].toUpperCase());
         user.setPassword(MD5Utils.MD5Encode(user.getPassword(), "utf-8"));
         return userRepository.save(user);
+    }
+
+    @Override
+    public UsersEntity checkMailIsExists(String mail) {
+        return userRepository.findUsersEntityByMail(mail);
+    }
+
+    @Override
+    public UsersEntity login(String mail, String password) {
+        return userRepository.findUsersEntityByMailAndPassword(mail, password);
+
     }
 }

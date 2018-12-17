@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="../res/static/css/main.css">
-    <link rel="stylesheet" type="text/css" href="../res/layui/css/layui.css">
-    <script type="text/javascript" src="../res/layui/layui.js"></script>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/res/static/css/main.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/res/layui/css/layui.css}">
+        <script type="text/javascript" th:src="@{/res/layui/layui.all.js}"></script>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    </head>
 <body>
 
 <div class="site-nav-bg">
@@ -18,7 +19,13 @@
             <i class="layui-icon layui-icon-home"></i>
             <a href="#">首页</a>
         </p>
-        <div class="sn-quick-menu">
+        <div class="sn-quick-menu" th:if="${session.user != null}">
+            <div class="login"><a href="/user/login" th:text="${session.user.username}"></a></div><!--用th:text-->
+            <div class="login"><a href="#">我的订单</a></div>
+            <!--<div class="login"><a href="index">登录</a></div>-->
+            <div class="sp-cart"><a href="shopcart.html">购物车</a><span>2</span></div>
+        </div>
+        <div class="sn-quick-menu" th:if="${session.user == null}">
             <div class="login"><a href="/user/login">登录</a></div>
             <div class="login"><a href="/user/register">注册</a></div>
             <!--<div class="login"><a href="index">登录</a></div>-->
@@ -67,31 +74,80 @@
     <div class="login-bg">
         <div class="login-cont w1200">
             <div class="form-box">
-                <form class="layui-form" action="">
-                    <legend>邮箱登录</legend>
-                    <div class="layui-form-item">
-                        <div class="layui-inline iphone">
-                            <div class="layui-input-inline">
-                                <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
-                                <input type="tel" name="phone" id="phone" lay-verify="required|phone"
-                                       placeholder="请输入邮箱" autocomplete="off" class="layui-input">
-                            </div>
+                <div class="layui-tab">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">用邮箱验证码登录</li>
+                        <li>用密码登录</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline iphone">
+                                        <div class="layui-input-inline">
+                                            <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
+                                            <input type="tel" name="mail" lay-verify="required|email"
+                                                   placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline veri-code">
+                                        <div class="layui-input-inline">
+                                            <input id="pnum" type="text" name="pnum" lay-verify="required"
+                                                   placeholder="请输入验证码"
+                                                   autocomplete="off" class="layui-input">
+                                            <input type="button" class="layui-btn" id="find" value="验证码"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item login-btn">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="login-for-code"
+                                                onclick="return false">登录
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="layui-inline veri-code">
-                            <div class="layui-input-inline">
-                                <input id="pnum" type="text" name="pnum" lay-verify="required" placeholder="请输入验证码"
-                                       autocomplete="off" class="layui-input">
-                                <input type="button" class="layui-btn" id="find" value="验证码"/>
-                            </div>
+                        <div class="layui-tab-item">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline iphone">
+                                        <div class="layui-input-inline">
+                                            <i class="layui-icon layui-icon-cellphone iphone-icon"></i>
+                                            <input type="email" name="mail" lay-verify="required|email"
+                                                   placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline iphone">
+                                        <div class="layui-input-inline">
+                                            <i class="layui-icon layui-icon-password iphone-icon"></i>
+                                            <input type="password" name="password" lay-verify="required"
+                                                   placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline veri-code">
+                                        <div class="layui-input-inline">
+                                            <input id="verify" type="text" name="verify" lay-verify="required"
+                                                   placeholder="请输入验证码"
+                                                   autocomplete="off" class="layui-input">
+                                            <!-- <img th:src="@{/res/layui/images/face/9.gif}" width="100" title="验证码"
+                                                  class="layui-btn"/>-->
+                                            <img id="page-code" th:src="@{/verifyCode}" width="100" title="验证码"
+                                                 class="layui-btn"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item login-btn">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="login-for-pass"
+                                                onclick="return false">登录
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="layui-form-item login-btn">
-                        <div class="layui-input-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="demo1" onclick="return false">登录
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -131,25 +187,24 @@
 
 
         find.click(function () {
-            if (!/^1\d{10}$/.test($("#phone").val())) {
-                layer.msg("请输入正确的手机号");
+            var mail = $("[name = 'mail']:eq(0)");
+            if (!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(mail.val())) {
+                layer.msg("请输入正确的邮箱");
                 return false;
             }
             var obj = this;
             $.ajax({
-                type: "get",
-                url: "../json/login.json",
+                type: "POST",
+                url: "/send",
+                data: {mail: mail.val()},
                 dataType: "json",//返回的
                 success: function (data) {
-
-                    if (data.result) {
-                        find.addClass(" layui-btn-disabled");
+                    if (data.code === 0) {
+                        find.addClass("layui-btn-disabled");
                         find.attr('disabled', "true");
                         settime(obj);
-                        $("#msg").text(data.msg);
-                    } else {
-                        layer.msg(data.msg);
                     }
+                    layer.msg(data.msg);
                 },
                 error: function (msg) {
                     console.log(msg);
@@ -161,7 +216,7 @@
         function settime(obj) {
             if (countdown === 0) {
                 obj.removeAttribute("disabled");
-                obj.classList.remove("layui-btn-disabled")
+                obj.classList.remove("layui-btn-disabled");
                 obj.value = "获取验证码";
                 countdown = 60;
                 return;
@@ -175,6 +230,44 @@
                 }
                 , 1000)
         }
+
+        //监听提交
+        form.on('submit(login-for-code)', function (data) {
+            $.post('/login', data.field, function (msg) {
+                if (msg.code === 0) {
+                    layer.msg(msg.msg);
+                    /**
+                     * 在这儿写成功登陆的话去主页
+                    * */
+                    location.href="/index";
+                } else {
+                    layer.msg(msg.msg);
+                }
+            });
+            return false;
+        });
+
+
+        //监听提交
+        form.on('submit(login-for-pass)', function (data) {
+            $.post('/login', data.field, function (msg) {
+                if (msg.code === 0) {
+                    layer.msg(msg.msg);
+                    location.href="/index";
+                } else {
+                    layer.msg(msg.msg);
+                }
+            });
+            return false;
+        });
+
+
+        //
+        //2.点击验证码 更新验证码
+        $("#page-code").click(function () {
+            $("#page-code").attr("src", "/verifyCode?time=" + new Date());
+            /*加个/,这样就不会前面加user了*/
+        });
     })
 </script>
 
