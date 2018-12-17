@@ -179,25 +179,24 @@
 
 
         find.click(function () {
-            if (!/^1\d{10}$/.test($("#phone").val())) {
-                layer.msg("请输入正确的手机号");
+            var mail = $("[name = 'mail']:eq(0)");
+            if (!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(mail.val())) {
+                layer.msg("请输入正确的邮箱");
                 return false;
             }
             var obj = this;
             $.ajax({
-                type: "get",
-                url: "../json/login.json",
+                type: "POST",
+                url: "/send",
+                data: {mail: mail.val()},
                 dataType: "json",//返回的
                 success: function (data) {
-
-                    if (data.result) {
-                        find.addClass(" layui-btn-disabled");
+                    if (data.code === 0) {
+                        find.addClass("layui-btn-disabled");
                         find.attr('disabled', "true");
                         settime(obj);
-                        $("#msg").text(data.msg);
-                    } else {
-                        layer.msg(data.msg);
                     }
+                    layer.msg(data.msg);
                 },
                 error: function (msg) {
                     console.log(msg);
