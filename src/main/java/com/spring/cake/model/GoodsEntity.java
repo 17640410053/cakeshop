@@ -1,5 +1,6 @@
 package com.spring.cake.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
@@ -18,10 +19,14 @@ public class GoodsEntity {
     private Timestamp createtime;
     private Timestamp updatetime;
     private String img;
+    @JsonIgnore
     private List<CartEntity> cartsByGoodsId;
+    @JsonIgnore
     private List<CommentEntity> commentsByGoodsId;
     private TypeEntity typeByTypeId;
+    @JsonIgnore
     private List<AttrEntity> goodsAttrsByGoodsId;
+    @JsonIgnore
     private List<OrderdetailEntity> orderdetailsByGoodsId;
 
     @Id

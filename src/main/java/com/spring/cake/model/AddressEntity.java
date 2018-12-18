@@ -1,5 +1,6 @@
 package com.spring.cake.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class AddressEntity {
     private Timestamp createTime;
     private Integer defaultAddress;
     private UsersEntity usersByUserId;
+    @JsonIgnore
     private List<OrderEntity> ordersByAddressId;
 
     @Id
@@ -49,7 +51,6 @@ public class AddressEntity {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
 
 
     @Basic

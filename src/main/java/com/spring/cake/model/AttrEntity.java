@@ -1,5 +1,6 @@
 package com.spring.cake.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class AttrEntity {
     private int attrId;
     private String name;
+    @JsonIgnore
     private List<GoodsEntity> goodsAttrsByAttrId;
 
     @Id

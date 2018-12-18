@@ -70,11 +70,8 @@
             <div class="category-tab-content">
                 <div class="nav-con">
                     <ul class="normal-nav layui-clear">
-                        <!--跟jsp一样的，jsp用c:foreach，html用th:each，没有什么区别，就是换了个语句而已，所以不要想着怎么传值，就是这样取得-->
-                        <!--这个语法是这样的，th:obj,stat:${List} ,obj是你这个集合里面的对象，stat相当于级数，取到第几个了，${List}就是域里面的东西，th:写在哪个标签就循环哪个标签内部的内容-->
-                        <li class="nav-item" th:each="type,typeStat:${typeList}">
-                            <!--如果你写的是对的，他会出现提示的,看到了吗yes,出来了是吧对，那就对了，你先理解一下，不难，对比着-->
-                            <div class="title" th:text="${type.getName()}"></div>
+                        <li class="nav-item">
+                            <div class="title">奶粉辅食</div>
                             <p><a href="#">奶粉</a><a href="#">捕食</a><a href="#">营养品</a></p>
                             <i class="layui-icon layui-icon-right"></i>
                         </li>
@@ -159,17 +156,13 @@
                                         <del>￥99.00</del>
                                     </div>
                                 </div>
-                                <div class="item" th:each="goods,goodsStat:${goodsList}">
-                                    <!--static不用加，已经帮你过滤掉了-->
-                                    <a href=""> <a href="javascript:;"><img th:src="@{'/cakeImg/'+${goods.getImg()}}"></a>
-                                        <!--<div class="title">宝宝五彩袜棉质舒服</div>-->
-                                        <div class="title" th:text="${goods.getName()}"></div>
-                                        <div class="price">
-                                            <!--<span>￥49.00</span>-->
-                                            <span th:text="'￥'+${goods.getPrice()}"></span>
-                                            <del>￥299.00</del>
-                                        </div>
-                                    </a>
+                                <div class="item">
+                                    <a href="javascript:;"><img src="../res/static/img/s_img5.jpg"></a>
+                                    <div class="title">宝宝五彩袜棉质舒服</div>
+                                    <div class="price">
+                                        <span>￥49.00</span>
+                                        <del>￥99.00</del>
+                                    </div>
                                 </div>
                             </div>
                             <div class="item-box">
@@ -214,34 +207,6 @@
     </div>
 
 
-    <div class="hot-recommend-con">
-        <div class="hot-con1 w1200 layui-clear">
-            <div class="item">
-                <h4>热销推荐</h4>
-                <div class="big-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot1.png"></a>
-                </div>
-                <div class="small-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot2.png" alt=""></a>
-                </div>
-            </div>
-            <div class="item">
-                <div class="top-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot5.jpg"></a>
-                </div>
-                <div class="bottom-img">
-                    <a href="javascript:;"><img src="../res/static/img/hot6.jpg"></a>
-                    <a class="baby-cream" href="javascript:;"><img src="../res/static/img/hot7.jpg"></a>
-                </div>
-            </div>
-            <div class="item item1 margin0 padding0">
-                <a href="javascript:;"><img src="../res/static/img/hot8.jpg"></a>
-                <a href="javascript:;"><img class="btm-img" src="../res/static/img/hot9.jpg"></a>
-            </div>
-        </div>
-    </div>
-
-    <!--my-->
     <div class="hot-recommend-con">
         <div class="hot-con1 w1200 layui-clear">
             <div class="item">

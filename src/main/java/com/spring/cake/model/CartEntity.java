@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "cart", schema = "cake", catalog = "")
 public class CartEntity {
     private int cartId;
-
     private Integer num;
     private Integer money;
     private UsersEntity usersByUserId;
