@@ -17,8 +17,9 @@ public class GoodsEntity {
     private Integer price;
     private Integer status;
     private Timestamp createtime;
-    private Timestamp updatetime;
+  /*  private Timestamp updatetime;*/
     private String img;
+    private Integer  star;
     @JsonIgnore
     private List<CartEntity> cartsByGoodsId;
     @JsonIgnore
@@ -90,6 +91,7 @@ public class GoodsEntity {
         this.createtime = createtime;
     }
 
+/*
     @Basic
     @Column(name = "updatetime")
     public Timestamp getUpdatetime() {
@@ -99,6 +101,7 @@ public class GoodsEntity {
     public void setUpdatetime(Timestamp updatetime) {
         this.updatetime = updatetime;
     }
+*/
 
 
     @Basic
@@ -110,6 +113,19 @@ public class GoodsEntity {
     public void setImg(String img) {
         this.img = img;
     }
+    @Basic
+    @Column(name = "star")
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
+
+
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -124,9 +140,9 @@ public class GoodsEntity {
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
         if (status != null ? !status.equals(that.status) : that.status != null) return false;
         if (createtime != null ? !createtime.equals(that.createtime) : that.createtime != null) return false;
-        if (updatetime != null ? !updatetime.equals(that.updatetime) : that.updatetime != null) return false;
-        if (img != null ? !img.equals(that.img) : that.img != null) return false;
 
+        if (img != null ? !img.equals(that.img) : that.img != null) return false;
+        if (star != null ? !star.equals(that.star) : that.star != null) return false;
         return true;
     }
 
@@ -138,7 +154,7 @@ public class GoodsEntity {
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (createtime != null ? createtime.hashCode() : 0);
-        result = 31 * result + (updatetime != null ? updatetime.hashCode() : 0);
+        result = 31 * result + (star != null ? star.hashCode() : 0);
         result = 31 * result + (img != null ? img.hashCode() : 0);
         return result;
     }
