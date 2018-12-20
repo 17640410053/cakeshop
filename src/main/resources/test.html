@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://res.bestcake.com/css-2/global.css?v=20161129">
+    <link rel="stylesheet" href="https://res.bestcake.com/css/index-2/head2.min.css?v=20180320">
+    <link rel="stylesheet" href="https://res.bestcake.com/css/swiper.min.css">
+    <link rel="stylesheet" href="https://res.bestcake.com/css/ui.min.css">
+
+</head>
+<body>
+<div class="index-seven-list">
+    <div class="seven_one">
+        <!--ko foreach:$data.MenuProduct-->
+        <!--ko if:$index()==0-->
+        <div class="seven_one_one" data-bind="click:function(){$root.jumpHref($data.ProductHref)}">
+            <img data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl}" style="width: 260px; height: 300px;" src="https://res.bestcake.com/images/new-index/seven_left_one.png?v=12">
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+
+        <!--ko if:$index()==0--><!--/ko-->
+        <!--/ko-->
+
+        <!--ko foreach:$data.MenuProduct-->
+        <!--ko if:$index()>0 && $index()<4--><!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4-->
+        <div class="seven_one_one seven_one_two">
+            <img class="index-three-cake" data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl},click:function(){$root.jumpHref($data.ProductHref)}" src="https://res.bestcake.com/images/new-index/p/双果小确幸.png">
+            <div class="seven_info">
+                <span style="color: #000; font-size: 16px;" data-bind="text:$data.Name">双果小确幸</span>
+                <div style="max-height: 30px;">
+                    <span style="color: #ff3300; font-size: 17px;">￥</span>
+                    <span style="color: #ff3300; font-size: 22px;" data-bind="text:($data.CostPrice||$data.Price).toFixed(2)">288.00</span>
+                </div>
+                <span style="color: #a8a8a8; font-size: 15px;">销量
+                                    <abbr data-bind="text:$data.SaleCount || 0">11549</abbr>
+                                </span>
+            </div>
+            <div class="shop" data-bind="click:function(){$root.openCart($data)}"></div>
+            <div class="shop_car" data-bind="visible:$data.ShowSizeList" style="display: none;">
+                <p class="shop_car_money"><span style="color: #333;" data-bind="text:'￥'+$data.ChoosePrice().toFixed(2)">￥288.00</span>/ <span class="chose_num" data-bind="text:$data.ChooseSize">1.2磅</span></p>
+                <div data-bind="foreach:$data.SizeList">
+                    <div class="shop_car_num borde" data-bind="click:function(){$root.ChooseSize($parent,$data)},css:$parent.ChooseSize() === $data?'borde':''">
+                        <num data-bind="text:$data">1.2磅</num>
+                        <img src="https://res.bestcake.com/images/new-index/seven_7.png?v=1" alt="选择" class="shop_car_num_yes displ" data-bind="visible:$parent.ChooseSize() === $data">
+                    </div>
+                </div>
+
+                <div class="shop_car_join">
+                    <div data-bind="click:function(){$root.buy($data,'cart')}">加入购物车</div>
+                    <div data-bind="click:function(){$root.buy($data,'buy')}">立即购买</div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4-->
+        <div class="seven_one_one seven_one_two">
+            <img class="index-three-cake" data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl},click:function(){$root.jumpHref($data.ProductHref)}" src="https://res.bestcake.com/images/new-index/p/芒GO.png">
+            <div class="seven_info">
+                <span style="color: #000; font-size: 16px;" data-bind="text:$data.Name">芒GO</span>
+                <div style="max-height: 30px;">
+                    <span style="color: #ff3300; font-size: 17px;">￥</span>
+                    <span style="color: #ff3300; font-size: 22px;" data-bind="text:($data.CostPrice||$data.Price).toFixed(2)">188.00</span>
+                </div>
+                <span style="color: #a8a8a8; font-size: 15px;">销量
+                                    <abbr data-bind="text:$data.SaleCount || 0">9569</abbr>
+                                </span>
+            </div>
+            <div class="shop" data-bind="click:function(){$root.openCart($data)}"></div>
+            <div class="shop_car" data-bind="visible:$data.ShowSizeList" style="display: none;">
+                <p class="shop_car_money"><span style="color: #333;" data-bind="text:'￥'+$data.ChoosePrice().toFixed(2)">￥188.00</span>/ <span class="chose_num" data-bind="text:$data.ChooseSize">1.0磅</span></p>
+                <div data-bind="foreach:$data.SizeList">
+                    <div class="shop_car_num borde" data-bind="click:function(){$root.ChooseSize($parent,$data)},css:$parent.ChooseSize() === $data?'borde':''">
+                        <num data-bind="text:$data">1.0磅</num>
+                        <img src="https://res.bestcake.com/images/new-index/seven_7.png?v=1" alt="选择" class="shop_car_num_yes displ" data-bind="visible:$parent.ChooseSize() === $data">
+                    </div>
+                </div>
+
+                <div class="shop_car_join">
+                    <div data-bind="click:function(){$root.buy($data,'cart')}">加入购物车</div>
+                    <div data-bind="click:function(){$root.buy($data,'buy')}">立即购买</div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4-->
+        <div class="seven_one_one seven_one_two">
+            <img class="index-three-cake" data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl},click:function(){$root.jumpHref($data.ProductHref)}" src="https://res.bestcake.com/images/new-index/p/歌剧魅影.png">
+            <div class="seven_info">
+                <span style="color: #000; font-size: 16px;" data-bind="text:$data.Name">歌剧魅影</span>
+                <div style="max-height: 30px;">
+                    <span style="color: #ff3300; font-size: 17px;">￥</span>
+                    <span style="color: #ff3300; font-size: 22px;" data-bind="text:($data.CostPrice||$data.Price).toFixed(2)">218.00</span>
+                </div>
+                <span style="color: #a8a8a8; font-size: 15px;">销量
+                                    <abbr data-bind="text:$data.SaleCount || 0">35461</abbr>
+                                </span>
+            </div>
+            <div class="shop" data-bind="click:function(){$root.openCart($data)}"></div>
+            <div class="shop_car" data-bind="visible:$data.ShowSizeList" style="display: none;">
+                <p class="shop_car_money"><span style="color: #333;" data-bind="text:'￥'+$data.ChoosePrice().toFixed(2)">￥218.00</span>/ <span class="chose_num" data-bind="text:$data.ChooseSize">1.2磅</span></p>
+                <div data-bind="foreach:$data.SizeList">
+                    <div class="shop_car_num borde" data-bind="click:function(){$root.ChooseSize($parent,$data)},css:$parent.ChooseSize() === $data?'borde':''">
+                        <num data-bind="text:$data">1.2磅</num>
+                        <img src="https://res.bestcake.com/images/new-index/seven_7.png?v=1" alt="选择" class="shop_car_num_yes displ" data-bind="visible:$parent.ChooseSize() === $data">
+                    </div>
+                </div>
+
+                <div class="shop_car_join">
+                    <div data-bind="click:function(){$root.buy($data,'cart')}">加入购物车</div>
+                    <div data-bind="click:function(){$root.buy($data,'buy')}">立即购买</div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4--><!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4--><!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4--><!--/ko-->
+
+        <!--ko if:$index()>0 && $index()<4--><!--/ko-->
+        <!--/ko-->
+    </div>
+    <div class="seven_one">
+        <!--ko foreach:$data.MenuProduct-->
+        <!--ko if:$index()==4--><!--/ko-->
+
+        <!--ko if:$index()==4--><!--/ko-->
+
+        <!--ko if:$index()==4--><!--/ko-->
+
+        <!--ko if:$index()==4--><!--/ko-->
+
+        <!--ko if:$index()==4-->
+        <div class="seven_one_one" data-bind="click:function(){$root.jumpHref($data.ProductHref)}">
+            <img data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl}" style="width: 260px; height: 300px;" src="https://res.bestcake.com/images/new-index/seven_left_tow.png?v=12">
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()==4--><!--/ko-->
+
+        <!--ko if:$index()==4--><!--/ko-->
+
+        <!--ko if:$index()==4--><!--/ko-->
+        <!--/ko-->
+
+        <!--ko foreach:$data.MenuProduct-->
+        <!--ko if:$index()>4 --><!--/ko-->
+
+        <!--ko if:$index()>4 --><!--/ko-->
+
+        <!--ko if:$index()>4 --><!--/ko-->
+
+        <!--ko if:$index()>4 --><!--/ko-->
+
+        <!--ko if:$index()>4 --><!--/ko-->
+
+        <!--ko if:$index()>4 -->
+        <div class="seven_one_one seven_one_two">
+            <img data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl},click:function(){$root.jumpHref($data.ProductHref)}" src="https://res.bestcake.com/images/new-index/p/红莓森林(3.8特供).png">
+            <div class="seven_info">
+                <span style="color: #000; font-size: 16px;" data-bind="text:$data.Name">红莓森林(3.8特供)</span>
+                <div style="max-height: 30px;">
+                    <span style="color: #ff3300; font-size: 17px;">￥</span>
+                    <span style="color: #ff3300; font-size: 22px;" data-bind="text:($data.CostPrice||$data.Price).toFixed(2)">218.00</span>
+                </div>
+                <span style="color: #a8a8a8; font-size: 15px;">销量
+                                    <abbr data-bind="text:$data.SaleCount || 0">10541</abbr>
+                                </span>
+            </div>
+            <div class="shop" data-bind="click:function(){$root.openCart($data)}"></div>
+            <div class="shop_car" data-bind="visible:$data.ShowSizeList" style="display: none;">
+                <p class="shop_car_money"><span style="color: #333;" data-bind="text:'￥'+$data.ChoosePrice().toFixed(2)">￥218.00</span>/ <span class="chose_num" data-bind="text:$data.ChooseSize">1.2磅</span></p>
+                <div data-bind="foreach:$data.SizeList">
+                    <div class="shop_car_num borde" data-bind="click:function(){$root.ChooseSize($parent,$data)},css:$parent.ChooseSize() === $data?'borde':''">
+                        <num data-bind="text:$data">1.2磅</num>
+                        <img src="https://res.bestcake.com/images/new-index/seven_7.png?v=1" alt="选择" class="shop_car_num_yes displ" data-bind="visible:$parent.ChooseSize() === $data">
+                    </div>
+                </div>
+
+                <div class="shop_car_join">
+                    <div data-bind="click:function(){$root.buy($data,'cart')}">加入购物车</div>
+                    <div data-bind="click:function(){$root.buy($data,'buy')}">立即购买</div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()>4 -->
+        <div class="seven_one_one seven_one_two">
+            <img data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl},click:function(){$root.jumpHref($data.ProductHref)}" src="https://res.bestcake.com/images/new-index/p/酸奶芝士.png">
+            <div class="seven_info">
+                <span style="color: #000; font-size: 16px;" data-bind="text:$data.Name">酸奶芝士</span>
+                <div style="max-height: 30px;">
+                    <span style="color: #ff3300; font-size: 17px;">￥</span>
+                    <span style="color: #ff3300; font-size: 22px;" data-bind="text:($data.CostPrice||$data.Price).toFixed(2)">218.00</span>
+                </div>
+                <span style="color: #a8a8a8; font-size: 15px;">销量
+                                    <abbr data-bind="text:$data.SaleCount || 0">6908</abbr>
+                                </span>
+            </div>
+            <div class="shop" data-bind="click:function(){$root.openCart($data)}"></div>
+            <div class="shop_car" data-bind="visible:$data.ShowSizeList" style="display: none;">
+                <p class="shop_car_money"><span style="color: #333;" data-bind="text:'￥'+$data.ChoosePrice().toFixed(2)">￥218.00</span>/ <span class="chose_num" data-bind="text:$data.ChooseSize">1.2磅</span></p>
+                <div data-bind="foreach:$data.SizeList">
+                    <div class="shop_car_num borde" data-bind="click:function(){$root.ChooseSize($parent,$data)},css:$parent.ChooseSize() === $data?'borde':''">
+                        <num data-bind="text:$data">1.2磅</num>
+                        <img src="https://res.bestcake.com/images/new-index/seven_7.png?v=1" alt="选择" class="shop_car_num_yes displ" data-bind="visible:$parent.ChooseSize() === $data">
+                    </div>
+                </div>
+
+                <div class="shop_car_join">
+                    <div data-bind="click:function(){$root.buy($data,'cart')}">加入购物车</div>
+                    <div data-bind="click:function(){$root.buy($data,'buy')}">立即购买</div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+
+        <!--ko if:$index()>4 -->
+        <div class="seven_one_one seven_one_two">
+            <img data-bind="attr:{src:'https://res.bestcake.com'+$data.ImgUrl},click:function(){$root.jumpHref($data.ProductHref)}" src="https://res.bestcake.com/images/new-index/p/轨迹.png">
+            <div class="seven_info">
+                <span style="color: #000; font-size: 16px;" data-bind="text:$data.Name">轨迹</span>
+                <div style="max-height: 30px;">
+                    <span style="color: #ff3300; font-size: 17px;">￥</span>
+                    <span style="color: #ff3300; font-size: 22px;" data-bind="text:($data.CostPrice||$data.Price).toFixed(2)">188.00</span>
+                </div>
+                <span style="color: #a8a8a8; font-size: 15px;">销量
+                                    <abbr data-bind="text:$data.SaleCount || 0">7150</abbr>
+                                </span>
+            </div>
+            <div class="shop" data-bind="click:function(){$root.openCart($data)}"></div>
+            <div class="shop_car" data-bind="visible:$data.ShowSizeList" style="display: none;">
+                <p class="shop_car_money"><span style="color: #333;" data-bind="text:'￥'+$data.ChoosePrice().toFixed(2)">￥188.00</span>/ <span class="chose_num" data-bind="text:$data.ChooseSize">1.0磅</span></p>
+                <div data-bind="foreach:$data.SizeList">
+                    <div class="shop_car_num borde" data-bind="click:function(){$root.ChooseSize($parent,$data)},css:$parent.ChooseSize() === $data?'borde':''">
+                        <num data-bind="text:$data">1.0磅</num>
+                        <img src="https://res.bestcake.com/images/new-index/seven_7.png?v=1" alt="选择" class="shop_car_num_yes displ" data-bind="visible:$parent.ChooseSize() === $data">
+                    </div>
+                </div>
+
+                <div class="shop_car_join">
+                    <div data-bind="click:function(){$root.buy($data,'cart')}">加入购物车</div>
+                    <div data-bind="click:function(){$root.buy($data,'buy')}">立即购买</div>
+                </div>
+            </div>
+        </div>
+        <!--/ko-->
+        <!--/ko-->
+    </div>
+
+</div>
+</body>
+</html>

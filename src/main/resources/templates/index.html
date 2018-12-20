@@ -71,7 +71,8 @@
                 <div class="nav-con">
                     <ul class="normal-nav layui-clear">
                         <!--跟jsp一样的，jsp用c:foreach，html用th:each，没有什么区别，就是换了个语句而已，所以不要想着怎么传值，就是这样取得-->
-                        <!--这个语法是这样的，th:obj,stat:${List} ,obj是你这个集合里面的对象，stat相当于级数，取到第几个了，${List}就是域里面的东西，th:写在哪个标签就循环哪个标签内部的内容-->
+                        <!--这个语法是这样的，th:obj,stat:${List} ,obj是你这个集合里面的对象，stat相当于级数，取到第几个了，${List}就是域里面的东西，th:写在哪个标签就循环哪个标签的内容
+                        循环你each所在标签的内容，包含了标签-->
                         <li class="nav-item" th:each="type,typeStat:${typeList}">
                             <!--如果你写的是对的，他会出现提示的,看到了吗yes,出来了是吧对，那就对了，你先理解一下，不难，对比着-->
                             <div class="title" th:text="${type.getName()}"></div>
@@ -244,12 +245,12 @@
 
 
     <div class="product-cont w1200" id="product-cont">
-        <div class="product-item product-item1 layui-clear" th:each="type,typeStat:${typeList}">
+        <div class="product-item product-item1 layui-clear">
             <div class="left-title">
                 <h4><i>1F</i></h4>
                 <img src="../res/static/img/icon_gou.png">
                 <!--<h5>宝宝服饰</h5>-->
-                <h5 th:text="${type.getName()}"></h5>
+                <h5>蛋糕</h5>
             </div>
             <div class="right-cont">
                 <a href="javascript:;" class="top-img"><img src="../res/static/img/img12.jpg" alt=""></a>
@@ -259,8 +260,10 @@
                      <a href="javascript:;"><img src="../res/static/img/s_img9.jpg"></a>
                      <a href="javascript:;"><img src="../res/static/img/s_img10.jpg"></a>
                      <a href="javascript:;"><img src="../res/static/img/s_img11.jpg"></a> -->
-                    <a href="javascript:;" th:each="goods,goodsStat:${goodsList}" th:text="${goods.getName()}"><img th:src="@{'/cakeImg/'+${goods.getImg()}}"></a>
-                    th:src="@{'/cakeImg/'+${goods.getImg()}}"
+                    <a href="javascript:;" th:each="goods,goodsStat:${cakeList}">
+                        <img th:src="@{'/cakeImg/'+${goods.getImg()}}" style="width: 199px;height: 197px; float: left"
+                             alt="">
+                    </a>
                     <!--   <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>
                        <a href="javascript:;"><img src="../res/static/img/s_img9.jpg"></a>
                        <a href="javascript:;"><img src="../res/static/img/s_img10.jpg"></a>
@@ -277,11 +280,16 @@
             <div class="right-cont">
                 <a href="javascript:;" class="top-img"><img src="../res/static/img/img12.jpg" alt=""></a>
                 <div class="img-box">
-                    <a href="javascript:;"><img src="../res/static/img/s_img7.jpg"></a>
-                    <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>
-                    <a href="javascript:;"><img src="../res/static/img/s_img9.jpg"></a>
-                    <a href="javascript:;"><img src="../res/static/img/s_img10.jpg"></a>
-                    <a href="javascript:;"><img src="../res/static/img/s_img11.jpg"></a>
+                    <!--  <a href="javascript:;"><img src="../res/static/img/s_img7.jpg"></a>
+                      <a href="javascript:;"><img src="../res/static/img/s_img8.jpg"></a>
+                      <a href="javascript:;"><img src="../res/static/img/s_img9.jpg"></a>
+                      <a href="javascript:;"><img src="../res/static/img/s_img10.jpg"></a>
+                      <a href="javascript:;"><img src="../res/static/img/s_img11.jpg"></a>-->
+
+                    <a href="javascript:;" th:each="goods,goodsStat:${snacksList}">
+                        <img th:src="@{'/cakeImg/'+${goods.getImg()}}" style="width: 199px;height: 197px; float: left"
+                             alt="">
+                    </a>
                 </div>
             </div>
         </div>

@@ -24,7 +24,7 @@ public class GoodsEntity {
     private List<CartEntity> cartsByGoodsId;
     @JsonIgnore
     private List<CommentEntity> commentsByGoodsId;
-    private TypeEntity typeByTypeId;
+    private TypeEntity typeByTypeId; //这个By后面的其实就是你实体里面的名字
     @JsonIgnore
     private List<AttrEntity> goodsAttrsByGoodsId;
     @JsonIgnore
